@@ -4,8 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import system.controller.MainController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Main Application class, and this is the starting point of the full
