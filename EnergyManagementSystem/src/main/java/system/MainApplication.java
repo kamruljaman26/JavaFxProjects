@@ -4,20 +4,20 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import system.controller.MainController;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Main Application class, and this is the starting point of the full
  * management system.
+ *
  * @author kamrul
  */
 public class MainApplication extends Application {
 
     /**
      * default init method of the application
+     *
      * @throws Exception
      */
     @Override
@@ -27,13 +27,14 @@ public class MainApplication extends Application {
 
     /**
      * Initial Start method from javaFx application
+     *
      * @param stage Stage is created internally by the application platform
      * @throws IOException
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 500);
         stage.setTitle("Energy Supplier Management System");
         stage.setScene(scene);
         stage.show();
@@ -41,6 +42,7 @@ public class MainApplication extends Application {
 
     /**
      * The method will when app will stop
+     *
      * @throws Exception
      */
     @Override
@@ -50,6 +52,7 @@ public class MainApplication extends Application {
 
     /**
      * Main method to run application
+     *
      * @param args cmd line arguments
      */
     public static void main(String[] args) {
