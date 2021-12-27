@@ -1,14 +1,11 @@
 package system.model;
 
-import system.utils.PasswordManager;
-
 import java.io.*;
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class CustomerDaoFile implements Dao<Customer> {
 
-    private Hashtable<String, Customer> customers = new Hashtable<>();
+    private static Hashtable<String, Customer> customers = new Hashtable<>();
     private final String fileName = "fileDB/customerDB.txt";
 
     public CustomerDaoFile() {
@@ -19,10 +16,11 @@ public class CustomerDaoFile implements Dao<Customer> {
     /**
      * Read all Customers from file and init to Map
      */
-    private void readDataFromFile() {
+    private synchronized void readDataFromFile() {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName));
-            this.customers = (Hashtable) in.readObject();
+            customers = (Hashtable) in.readObject();
+            in.close();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -31,12 +29,14 @@ public class CustomerDaoFile implements Dao<Customer> {
     /**
      * Read all Customers from file and init to Map
      */
-    private void writeDataIntoFile() {
+    private synchronized void writeDataIntoFile() {
         try {
             FileOutputStream fout = new FileOutputStream(fileName);
             ObjectOutputStream out = new ObjectOutputStream(fout);
             out.writeObject(customers);
             out.flush();
+            fout.close();
+            out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,15 +52,11 @@ public class CustomerDaoFile implements Dao<Customer> {
         return new ArrayList<>(customers.values());
     }
 
-    public Hashtable getAllHTable() {
-        return customers;
-    }
-
     @Override
     public boolean save(Customer customer) {
         Customer put = customers.put(customer.getUsername(), customer);
         writeDataIntoFile();
-        return put != null;
+        return put == null;
     }
 
     @Override
@@ -71,19 +67,10 @@ public class CustomerDaoFile implements Dao<Customer> {
         return true;
     }
 
-
     @Override
     public boolean delete(Customer customer) {
         boolean value = customers.remove(customer.getUsername()) != null;
         writeDataIntoFile();
         return value;
-    }
-
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        // save text data for check login
-        Dao<Customer> dao = new CustomerDaoFile();
-        dao.save(new Customer("Kamrul", "+880", "AAA", "kamrul1",
-                PasswordManager.encode("jaman")
-        ));
     }
 }

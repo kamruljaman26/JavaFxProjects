@@ -3,8 +3,11 @@ package system.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+
+
 public class Customer extends Person implements Serializable {
 
+    // username & password
     private String username;
     private String password;
 
@@ -13,7 +16,7 @@ public class Customer extends Person implements Serializable {
         this.username = username;
         this.password = password;
     }
-    
+
     public String getUsername() {
         return username;
     }

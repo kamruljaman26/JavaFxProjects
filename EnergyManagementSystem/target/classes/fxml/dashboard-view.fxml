@@ -17,7 +17,7 @@
 
 <!--VBox Frame-->
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.controller.SignupController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.controller.DashboardController">
     <children>
       <ImageView fx:id="logoImg" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -47,7 +47,7 @@
             <Insets top="20.0" />
          </VBox.margin>
          <children>
-            <Label text="Customer Sign-Up" GridPane.columnIndex="1">
+            <Label text="Dashboard" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

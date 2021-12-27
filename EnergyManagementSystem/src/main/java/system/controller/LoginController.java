@@ -5,26 +5,24 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import system.model.Customer;
-import system.model.CustomerDaoFile;
-import system.model.Dao;
+import javafx.stage.Stage;
+import system.App;
+import system.model.*;
 import system.utils.PasswordManager;
 import system.utils.StringData;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import system.utils.Util;
 
 
-public class LoginController {
+public class LoginController implements Stageable {
 
-
-    @FXML
-    private ImageView logoImg;
+    private Stage stage; // main stage
 
     @FXML
-    private Label errorm;
+    private ImageView logoImg; // title logo
+
+    @FXML
+    private Label errorm; // showing error messages
 
     @FXML
     private TextField username; // entered username
@@ -37,37 +35,28 @@ public class LoginController {
      */
     @FXML
     public void initialize() {
-        // set logo image
-        try {
-            FileInputStream input = new FileInputStream("images/system-logo.png");
-            Image image = new Image(input);
-            logoImg.setImage(image);
-        } catch (FileNotFoundException e) {
-            System.out.println("Logo Image no found!");
-            e.printStackTrace();
-        }
+        Util.setImage(logoImg, "images/system-logo.png"); // set logo
     }
 
     // Customer DAO
-    private Dao<Customer> cusDao = new CustomerDaoFile();
+    private final Dao<Customer> cusDao = new CustomerDaoFile();
 
     /**
      * Customer login
-     *
-     * @param actionEvent
      */
     public void customerLogin(ActionEvent actionEvent) {
         Customer customer = cusDao.get(username.getText());
         // if customer already registered, username veryfied
         if (customer != null && !password.getText().equals("")) {
             // verify password
-            System.out.println(customer.getPassword());
-            System.out.println(password.getText());
+//            System.out.println(customer.getPassword());
+//            System.out.println(password.getText());
             boolean verified = PasswordManager.verify(password.getText(), customer.getPassword());
-            if(verified){
+            if (verified) {
                 // successful login
-                System.out.println("Login Sucess");
-            }else {
+                System.out.println("Login Success, load dashboard");
+                stage.setScene(App.getScenes().get(SceneName.DASHBOARD).getScene());
+            } else {
                 // invalid password
                 errorm.setText(StringData.invalidPass);
             }
@@ -79,10 +68,20 @@ public class LoginController {
 
     /**
      * Customer sign-up
-     *
-     * @param actionEvent
      */
     public void customerSignUp(ActionEvent actionEvent) {
-        // todo: signup page
+        stage.setScene(App.getScenes().get(SceneName.SIGNUP).getScene()); // load signup page
+    }
+
+    /**
+     * exit button handler
+     */
+    public void exitButtonAction(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
+    @Override
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

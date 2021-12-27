@@ -1,12 +1,14 @@
 package system.model;
 
+
 import java.io.Serializable;
 
 /**
  * a person class, hold all information about a person
+ *
  * @author kamruljaman
  */
-public abstract class Person implements Serializable{
+public abstract class Person implements Serializable {
 
     protected String name;
     protected String phoneNum; // phone number

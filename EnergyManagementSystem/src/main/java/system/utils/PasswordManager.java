@@ -1,16 +1,12 @@
 package system.utils;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.KeySpec;
 
 public class PasswordManager {
     public static String encode(String password) throws NoSuchAlgorithmException {
 
-        // code copied from Javatpoint, we used MD5
+        // code copied from Javatpoint
 
         /* MessageDigest instance for MD5. */
         MessageDigest m = MessageDigest.getInstance("MD5");
@@ -34,17 +30,10 @@ public class PasswordManager {
     // Verify user given password with user encoded password
     public static boolean verify(String decoded, String encoded) {
         try {
-
             return encode(decoded).equals(encoded);
         } catch (NoSuchAlgorithmException e) {
+            System.out.println("fail to verify");
             return false;
         }
     }
-
-/*
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        String en = PasswordManager.encode("kamrul");
-        System.out.println(en);
-        System.out.println(verify("kamrul1",en));
-    }*/
 }
