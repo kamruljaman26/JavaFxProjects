@@ -2,7 +2,7 @@ package system;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import system.model.SceneName;
+import system.model.adt.SceneName;
 import system.utils.Fxml;
 import system.utils.StringData;
 

@@ -28,7 +28,7 @@
             <Insets top="10.0" />
          </VBox.margin>
       </ImageView>
-      <GridPane maxWidth="-Infinity" prefHeight="305.0" prefWidth="504.0" style="-fx-background-color: #dddddd;">
+      <GridPane maxWidth="-Infinity" prefHeight="303.0" prefWidth="504.0" style="-fx-background-color: #dddddd;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="10.0" prefWidth="111.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="453.0" minWidth="10.0" prefWidth="363.0" />
@@ -67,7 +67,7 @@
             <Label text="Re-enter Password:" GridPane.rowIndex="6" />
             <PasswordField fx:id="confirmPasswordFiled" promptText="password again" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Label text="Phone Number:" GridPane.rowIndex="2" />
-            <TextField fx:id="phoneNumFiled" layoutX="136.0" layoutY="65.0" promptText="i.e. Jhon Due" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="phoneNumFiled" layoutX="136.0" layoutY="65.0" promptText="i.e. +00 00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -83,8 +83,8 @@
       </Label>
       <AnchorPane prefHeight="20.0" prefWidth="580.0">
          <children>
-            <Button layoutX="27.0" layoutY="16.0" mnemonicParsing="false" onAction="#backButtonAction" text="BACK" />
-            <Button layoutX="484.0" layoutY="16.0" mnemonicParsing="false" onAction="#exitButtonAction" text="EXIT" />
+            <Button layoutX="39.0" layoutY="15.0" mnemonicParsing="false" onAction="#backButtonAction" text="BACK" />
+            <Button layoutX="500.0" layoutY="15.0" mnemonicParsing="false" onAction="#exitButtonAction" text="EXIT" />
          </children>
       </AnchorPane>
     </children>

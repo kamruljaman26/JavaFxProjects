@@ -7,10 +7,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import system.App;
-import system.model.*;
+import system.model.adt.Customer;
+import system.model.adt.SceneName;
+import system.utils.Stageable;
+import system.model.dao.CustomerDaoFile;
+import system.model.dao.Dao;
 import system.utils.PasswordManager;
 import system.utils.StringData;
-import system.utils.Util;
+import system.utils.Utils;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -41,7 +45,7 @@ public class SignupController implements Stageable {
     @FXML
     public void initialize() {
         // set logo image
-        Util.setImage(logoImg, "images/system-logo.png");
+        Utils.setImage(logoImg, "images/system-logo.png");
     }
 
     @Override

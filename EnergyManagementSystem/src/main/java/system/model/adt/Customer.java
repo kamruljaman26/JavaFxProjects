@@ -1,4 +1,4 @@
-package system.model;
+package system.model.adt;
 
 import java.io.Serializable;
 import java.util.Objects;

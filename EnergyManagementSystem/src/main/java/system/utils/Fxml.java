@@ -5,19 +5,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import system.App;
-import system.model.SceneName;
-import system.model.Stageable;
+import system.model.adt.SceneName;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;
 
 /**
+ * Code Copied from GitHub (original @author Knute Snortum)
+ *
  * The scenes are loaded lazily, that is, only the first time they are called.
  * After that, the loaded scene is looked and returned.
  *
  * @author Knute Snortum
- * @version 2019-01-30
  */
 public class Fxml {
 

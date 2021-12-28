@@ -1,15 +1,18 @@
-package system.model;
+package system.model.dao;
+
+import system.model.adt.Customer;
 
 import java.io.*;
 import java.util.*;
 
 public class CustomerDaoFile implements Dao<Customer> {
 
-    private static Hashtable<String, Customer> customers = new Hashtable<>();
+    private static Hashtable<String, Customer> customers;
     private final String fileName = "fileDB/customerDB.txt";
 
     public CustomerDaoFile() {
         // read and init from file
+        customers = new Hashtable<>();
         readDataFromFile();
     }
 
@@ -22,7 +25,8 @@ public class CustomerDaoFile implements Dao<Customer> {
             customers = (Hashtable) in.readObject();
             in.close();
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println("File was not created");
         }
     }
 

@@ -1,14 +1,10 @@
 package system.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import system.model.Stageable;
-import system.utils.Util;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import system.utils.Stageable;
+import system.utils.Utils;
 
 public class DashboardController implements Stageable {
 
@@ -22,7 +18,7 @@ public class DashboardController implements Stageable {
      */
     @FXML
     public void initialize() {
-        Util.setImage(logoImg, "images/system-logo.png");
+        Utils.setImage(logoImg, "images/system-logo.png");
     }
 
     @Override

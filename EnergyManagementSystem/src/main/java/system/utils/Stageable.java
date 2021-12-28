@@ -1,4 +1,4 @@
-package system.model;
+package system.utils;
 
 import javafx.stage.Stage;
 

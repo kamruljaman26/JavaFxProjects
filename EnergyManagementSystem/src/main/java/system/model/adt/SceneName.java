@@ -1,4 +1,4 @@
-package system.model;
+package system.model.adt;
 
 /**
  * Holds the name of the scenes.
