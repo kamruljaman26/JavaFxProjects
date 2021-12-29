@@ -17,6 +17,7 @@ import system.utils.StringData;
 import system.utils.Utils;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Locale;
 
 
 public class SignupController implements Stageable {
@@ -61,7 +62,7 @@ public class SignupController implements Stageable {
     public void signUpButtonAction(ActionEvent actionEvent) {
         // create customer & handle error
         String name = nameFiled.getText(), address = addressFiled.getText(),
-                username = usernameFiled.getText(), phone = phoneNumFiled.getText(),
+                username = usernameFiled.getText().toLowerCase(), phone = phoneNumFiled.getText(),
                 password = passwordFiled.getText(), confirmPass = confirmPasswordFiled.getText();
 
         // if any filed not filled
@@ -82,8 +83,9 @@ public class SignupController implements Stageable {
                     Customer customer = new Customer(name, phone, address, username, hashPass);
                     boolean saved = dao.save(customer);
 
-                    // todo navigate to energy option
+                    // todo:: navigate to energy option
                     if (saved) System.out.println("Customer added");
+
                 } catch (NoSuchAlgorithmException e) {
                     errorm.setText(StringData.errorCreatingCustomer);
                 }
