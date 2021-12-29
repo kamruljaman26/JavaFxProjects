@@ -6,5 +6,7 @@ package system.model.adt;
 public enum SceneName {
     LOGIN,
     SIGNUP,
-    DASHBOARD
+    DASHBOARD,
+    ADMIN_LOGIN,
+    ADMIN_DASHBOARD
 }

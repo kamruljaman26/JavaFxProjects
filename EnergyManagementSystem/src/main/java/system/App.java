@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 import system.model.adt.SceneName;
 import system.utils.Fxml;
 import system.utils.StringData;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,15 +24,24 @@ public class App extends Application {
 
     // All file path of fxml view
     private static final String LOGIN_FXML = "/fxml/login-view.fxml";
+    private static final String ADMIN_LOGIN_FXML = "/fxml/admin-login-view.fxml";
     private static final String SIGNUP_FXML = "/fxml/signup-view.fxml";
     private static final String DASHBOARD_FXML = "/fxml/dashboard-view.fxml";
+    private static final String ADMIN_DASHBOARD_FXML = "/fxml/admin-dashboard-view.fxml";
 
     @Override
     public void start(Stage stage) {
         // register all scene
-        scenes.put(SceneName.LOGIN, new Fxml(LOGIN_FXML, SceneName.LOGIN, stage)); // login
-        scenes.put(SceneName.SIGNUP, new Fxml(SIGNUP_FXML, SceneName.SIGNUP, stage)); // signup
-        scenes.put(SceneName.DASHBOARD, new Fxml(DASHBOARD_FXML, SceneName.DASHBOARD, stage)); // dashboard
+        scenes.put(SceneName.LOGIN,
+                new Fxml(LOGIN_FXML, SceneName.LOGIN, stage)); // login
+        scenes.put(SceneName.SIGNUP,
+                new Fxml(SIGNUP_FXML, SceneName.SIGNUP, stage)); // signup
+        scenes.put(SceneName.DASHBOARD,
+                new Fxml(DASHBOARD_FXML, SceneName.DASHBOARD, stage)); // dashboard
+        scenes.put(SceneName.ADMIN_LOGIN,
+                new Fxml(ADMIN_LOGIN_FXML, SceneName.ADMIN_LOGIN, stage)); // admin login
+        scenes.put(SceneName.ADMIN_DASHBOARD,
+                new Fxml(ADMIN_DASHBOARD_FXML, SceneName.ADMIN_DASHBOARD, stage)); // admin dashboard
 
         // getScene() will load the FXML file the first time
         stage.setScene(scenes.get(SceneName.LOGIN).getScene());

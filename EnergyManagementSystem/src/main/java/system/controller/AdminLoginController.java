@@ -8,17 +8,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import system.App;
+import system.model.adt.Admin;
 import system.model.adt.Customer;
 import system.model.adt.SceneName;
-import system.utils.Stageable;
 import system.model.dao.CustomerDaoFile;
 import system.model.dao.Dao;
 import system.utils.PasswordManager;
+import system.utils.Stageable;
 import system.utils.StringData;
 import system.utils.Utils;
 
+import java.security.NoSuchAlgorithmException;
 
-public class LoginController implements Stageable {
+
+public class AdminLoginController implements Stageable {
 
     private Stage stage; // main stage
 
@@ -49,15 +52,24 @@ public class LoginController implements Stageable {
      * Customer login
      */
     public void customerLogin(ActionEvent actionEvent) {
-        Customer customer = cusDao.get(username.getText());
+        // letter on we can extend the admin functionlity now for simplycity of the programe we are using a
+        // constant admin to text search by customer username or name
+        Admin admin = null;
+        try {
+            admin = new Admin("admin","admin","admin",
+                    "admin", PasswordManager.encode("admin"));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            System.out.println("Admin:login encode pass error");
+        }
         // if customer already registered, username veryfied
-        if (customer != null && !password.getText().equals("")) {
+        if (admin != null && username.getText().equals(admin.getUsername()) && !password.getText().equals("")) {
             // verify password
-            boolean verified = PasswordManager.verify(password.getText(), customer.getPassword());
+            boolean verified = PasswordManager.verify(password.getText(), admin.getPassword());
             if (verified) {
                 // successful login
-                System.out.println("Login Success, load dashboard");
-                stage.setScene(App.getScenes().get(SceneName.DASHBOARD).getScene());
+                System.out.println("Login Success, load admin dashboard");
+                stage.setScene(App.getScenes().get(SceneName.ADMIN_DASHBOARD).getScene());
             } else {
                 // invalid password
                 errorm.setText(StringData.invalidPass);
@@ -66,13 +78,6 @@ public class LoginController implements Stageable {
         } else {
             errorm.setText(StringData.invalidUserPass);
         }
-    }
-
-    /**
-     * Customer sign-up
-     */
-    public void customerSignUp(ActionEvent actionEvent) {
-        stage.setScene(App.getScenes().get(SceneName.SIGNUP).getScene()); // load signup page
     }
 
     /**
@@ -87,10 +92,7 @@ public class LoginController implements Stageable {
         this.stage = stage;
     }
 
-    /*
-     * load admin login scene
-     */
-    public void adminLoginAction(ActionEvent actionEvent) {
-        stage.setScene(App.getScenes().get(SceneName.ADMIN_LOGIN).getScene()); // load signup page
+    public void backButtonAction(ActionEvent actionEvent) {
+        stage.setScene(App.getScenes().get(SceneName.LOGIN).getScene());
     }
 }

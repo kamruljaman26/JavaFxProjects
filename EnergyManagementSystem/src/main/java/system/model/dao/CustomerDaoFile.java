@@ -1,13 +1,13 @@
 package system.model.dao;
 
-import system.model.adt.User;
+import system.model.adt.Customer;
 
 import java.io.*;
 import java.util.*;
 
-public class CustomerDaoFile implements Dao<User> {
+public class CustomerDaoFile implements Dao<Customer> {
 
-    private static Hashtable<String, User> customers;
+    private static Hashtable<String, Customer> customers;
     private final String fileName = "fileDB/customerDB.txt";
 
     public CustomerDaoFile() {
@@ -47,24 +47,24 @@ public class CustomerDaoFile implements Dao<User> {
     }
 
     @Override
-    public User get(String id) {
+    public Customer get(String id) {
         return customers.get(id);
     }
 
     @Override
-    public List<User> getAll() {
+    public List<Customer> getAll() {
         return new ArrayList<>(customers.values());
     }
 
     @Override
-    public boolean save(User customer) {
-        User put = customers.put(customer.getUsername(), customer);
+    public boolean save(Customer customer) {
+        Customer put = customers.put(customer.getUsername(), customer);
         writeDataIntoFile();
         return put == null;
     }
 
     @Override
-    public boolean update(String key, User customer) {
+    public boolean update(String key, Customer customer) {
         if (customers.get(key) == null) return false;
         customers.computeIfPresent(customer.getUsername(), (k, v) -> customer);
         writeDataIntoFile();
@@ -72,7 +72,7 @@ public class CustomerDaoFile implements Dao<User> {
     }
 
     @Override
-    public boolean delete(User customer) {
+    public boolean delete(Customer customer) {
         boolean value = customers.remove(customer.getUsername()) != null;
         writeDataIntoFile();
         return value;
