@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import system.App;
-import system.model.adt.Customer;
+import system.model.adt.User;
 import system.model.adt.SceneName;
 import system.utils.Stageable;
 import system.model.dao.CustomerDaoFile;
@@ -72,14 +72,14 @@ public class SignupController implements Stageable {
         }
 
         // check is the username is available
-        Dao<Customer> dao = new CustomerDaoFile();
+        Dao<User> dao = new CustomerDaoFile();
         if (dao.get(username) == null) {
             //check password matching
             if (password.equals(confirmPass)) {
                 // create & store customer
                 try {
                     String hashPass = PasswordManager.encode(password);
-                    Customer customer = new Customer(name, phone, address, username, hashPass);
+                    User customer = new User(name, phone, address, username, hashPass);
                     boolean saved = dao.save(customer);
 
                     // todo navigate to energy option

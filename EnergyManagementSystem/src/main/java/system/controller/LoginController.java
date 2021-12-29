@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import system.App;
-import system.model.adt.Customer;
+import system.model.adt.User;
 import system.model.adt.SceneName;
 import system.utils.Stageable;
 import system.model.dao.CustomerDaoFile;
@@ -43,18 +43,16 @@ public class LoginController implements Stageable {
     }
 
     // Customer DAO
-    private final Dao<Customer> cusDao = new CustomerDaoFile();
+    private final Dao<User> cusDao = new CustomerDaoFile();
 
     /**
      * Customer login
      */
     public void customerLogin(ActionEvent actionEvent) {
-        Customer customer = cusDao.get(username.getText());
+        User customer = cusDao.get(username.getText());
         // if customer already registered, username veryfied
         if (customer != null && !password.getText().equals("")) {
             // verify password
-//            System.out.println(customer.getPassword());
-//            System.out.println(password.getText());
             boolean verified = PasswordManager.verify(password.getText(), customer.getPassword());
             if (verified) {
                 // successful login

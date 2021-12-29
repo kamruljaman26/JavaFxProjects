@@ -5,7 +5,6 @@ import javafx.stage.Stage;
 import system.model.adt.SceneName;
 import system.utils.Fxml;
 import system.utils.StringData;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +12,6 @@ import java.util.Map;
  * Sets all scene info into a Map and displays the main scene.
  * <p>
  * Note: This class should be launched with these VM flags:
- * <p>
  * {@code --module-path /path/to/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml}
  *
  * @author Kamrul Jaman

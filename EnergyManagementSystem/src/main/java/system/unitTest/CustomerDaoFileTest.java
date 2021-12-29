@@ -1,7 +1,7 @@
 package system.unitTest;
 
 import org.junit.jupiter.api.*;
-import system.model.adt.Customer;
+import system.model.adt.User;
 import system.model.dao.CustomerDaoFile;
 import system.model.dao.Dao;
 
@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CustomerDaoFileTest {
 
-    private static Dao<Customer> dao;
-    private static ArrayList<Customer> list;
+    private static Dao<User> dao;
+    private static ArrayList<User> list;
 
 
     @BeforeEach
@@ -20,10 +20,10 @@ public class CustomerDaoFileTest {
         // "@BeforeAll - executes once before all test methods in this class"
         dao = new CustomerDaoFile();
         list = new ArrayList<>();
-        Customer customer = new Customer("Jhon Due", "+0011223344", "USA",
+        User customer = new User("Jhon Due", "+0011223344", "USA",
                 "jhon12", "jhon1122");
         ;
-        Customer customer2 = new Customer("Jony Hakon", "+003425334", "CA",
+        User customer2 = new User("Jony Hakon", "+003425334", "CA",
                 "jony23", "11jony");
 
         // save data
@@ -36,7 +36,7 @@ public class CustomerDaoFileTest {
     @DisplayName("TestGetCustomer")
     @Test
     void testGetCustomer() {
-        Customer customer = new Customer("Jhon Due", "+0011223344", "USA",
+        User customer = new User("Jhon Due", "+0011223344", "USA",
                 "jhon12", "jhon1122");
         assertEquals(dao.get(customer.getUsername()), customer);
     }
@@ -51,7 +51,7 @@ public class CustomerDaoFileTest {
     @Test
     void testSaveCustomer() {
         // Create list
-        Customer customer = new Customer("Jocab", "112233", "AUS", "jocab1", "123456");
+        User customer = new User("Jocab", "112233", "AUS", "jocab1", "123456");
         dao.save(customer); // save on file
         // test
         assertEquals(dao.get(customer.getUsername()), customer);
@@ -62,9 +62,9 @@ public class CustomerDaoFileTest {
     @Test
     void testUpdateCustomer() {
         // Create list
-        Customer cus = new Customer("Jhon Due", "+0011223344", "USA",
+        User cus = new User("Jhon Due", "+0011223344", "USA",
                 "jhon12", "jhon1122");
-        Customer updatedCus = new Customer("Honor Milan", "+1111223344", "CA",
+        User updatedCus = new User("Honor Milan", "+1111223344", "CA",
                 "jhon12", "jhon1122");
 
         dao.update(cus.getUsername(),updatedCus); // update file
@@ -79,7 +79,7 @@ public class CustomerDaoFileTest {
     @Test
     void testDeleteCustomer() {
         // Create list
-        Customer customer = new Customer("Rohan", "112233", "AUS", "rohan1", "123456");
+        User customer = new User("Rohan", "112233", "AUS", "rohan1", "123456");
         dao.save(customer); // add to file db
         dao.delete(customer); // delete from file db
 
