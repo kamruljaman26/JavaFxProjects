@@ -62,7 +62,6 @@ public class LoginController implements Stageable {
                 // invalid password
                 errorm.setText(StringData.invalidPass);
             }
-
         } else {
             errorm.setText(StringData.invalidUserPass);
         }

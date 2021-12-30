@@ -52,7 +52,7 @@ public class AdminLoginController implements Stageable {
      * Customer login
      */
     public void customerLogin(ActionEvent actionEvent) {
-        // letter on we can extend the admin functionlity now for simplycity of the programe we are using a
+        // letter on we can extend the admin functionality now for simplicity of the program we are using a
         // constant admin to text search by customer username or name
         Admin admin = null;
         try {
@@ -62,7 +62,7 @@ public class AdminLoginController implements Stageable {
             e.printStackTrace();
             System.out.println("Admin:login encode pass error");
         }
-        // if customer already registered, username veryfied
+        // if customer already registered, username verified
         if (admin != null && username.getText().equals(admin.getUsername()) && !password.getText().equals("")) {
             // verify password
             boolean verified = PasswordManager.verify(password.getText(), admin.getPassword());
