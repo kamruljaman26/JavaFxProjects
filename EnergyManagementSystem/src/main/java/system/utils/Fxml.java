@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import system.App;
-import system.model.adt.SceneName;
+import system.SceneName;
 
 import java.io.IOException;
 import java.net.URL;

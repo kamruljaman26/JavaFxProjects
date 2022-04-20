@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import system.App;
 import system.model.adt.Customer;
-import system.model.adt.SceneName;
+import system.SceneName;
 import system.utils.Stageable;
 import system.model.dao.CustomerDaoFile;
 import system.model.dao.Dao;
@@ -17,7 +17,6 @@ import system.utils.StringData;
 import system.utils.Utils;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.Locale;
 
 
 public class SignupController implements Stageable {

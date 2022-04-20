@@ -2,7 +2,6 @@ package system;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import system.model.adt.SceneName;
 import system.utils.Fxml;
 import system.utils.StringData;
 
@@ -49,7 +48,7 @@ public class App extends Application {
         stage.show();
     }
 
-    // @return a Map of the {@link Fxml} by {@link SceneName}
+    // @return a Map of the {@link Fxml} by {@link system.SceneName}
     public static Map<SceneName, Fxml> getScenes() {
         return scenes;
     }
